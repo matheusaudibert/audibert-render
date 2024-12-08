@@ -1,20 +1,24 @@
 require('dotenv').config();
-const { Client, GatewayIntentBits } = require('discord.js');
+const { Client, GatewayIntentBits, ActivityType } = require('discord.js');
 const axios = require('axios');
 
-// Carregando as variáveis de ambiente
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN;
 const API_URL = process.env.API_URL;
 
-// Criando o cliente do bot
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 client.once('ready', () => {
-    console.log(`Bot conectado como ${client.user.tag}`);
-    pingAPI(); // Inicia a tarefa de pingar a API
+    client.user.setPresence({
+    activities: [
+        {
+            name: 'api status: online',
+            type: ActivityType.Watching,
+        }
+    ],
+    });
+    pingAPI();
 });
 
-// Função para pingar a API
 const pingAPI = async () => {
     while (true) {
         try {
@@ -27,7 +31,6 @@ const pingAPI = async () => {
         } catch (error) {
             console.error(`Error: ${error.message}`);
         }
-        // Aguarda 10 minutos (600 segundos) antes de fazer a próxima requisição
         await new Promise(resolve => setTimeout(resolve, 600000));
     }
 };
