@@ -1,4 +1,5 @@
-require('dotenv').config();
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 const { Client, GatewayIntentBits, ActivityType } = require('discord.js');
 const axios = require('axios');
 
@@ -9,12 +10,12 @@ const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 client.once('ready', () => {
     client.user.setPresence({
-    activities: [
-        {
-            name: 'api status: online',
-            type: ActivityType.Watching,
-        }
-    ],
+        activities: [
+            {
+                name: 'api status',
+                type: ActivityType.Watching,
+            }
+        ],
     });
     pingAPI();
 });
@@ -35,5 +36,4 @@ const pingAPI = async () => {
     }
 };
 
-// Inicia o bot
 client.login(DISCORD_TOKEN);
