@@ -7,7 +7,7 @@ const ALLOWED_CHANNEL_ID = '1315464652490150020';
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('ping')
-        .setDescription('Retorna uma embed de sucesso com o resultado do ping'),
+        .setDescription('Pings the api url'),
     async execute(interaction) {
       if (interaction.channelId !== ALLOWED_CHANNEL_ID) {
             const errorEmbed = new EmbedBuilder()
