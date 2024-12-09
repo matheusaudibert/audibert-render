@@ -2,15 +2,18 @@
   "name": "audibert-render",
   "version": "1.0.0",
   "description": "render ping",
-  "main": "index.js",
+  "main": "commands.js",
   "scripts": {
-    "start": "node src/app.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@discordjs/builders": "^1.9.0",
+    "axios": "^1.7.9",
+    "discord.js": "^14.16.3",
+    "dotenv": "^16.4.7",
     "ping": "^0.4.4"
   }
 }
