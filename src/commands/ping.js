@@ -26,7 +26,7 @@ module.exports = {
 
             const embed = new EmbedBuilder()
                 .setColor('#232428')
-                .setDescription(`Host=**${host}** Status:${res.alive ? 'Online=' : 'Offline='} Time=${res.time}ms`)
+                .setDescription(`Host=**${host}** Status=${res.alive ? 'Online' : 'Offline'} Time=${res.time}ms`)
             const message = await interaction.reply({ embeds: [embed], fetchReply: true });
 
             
