@@ -2,7 +2,6 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 const { EmbedBuilder } = require('discord.js');
 const ping = require('ping');
 
-
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('ping')
