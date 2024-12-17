@@ -23,23 +23,12 @@ client.once('ready', () => {
     pingAPI();
 });
 
-client.on('interactionCreate', async interaction => {
-    if (!interaction.isCommand()) return;
-
-    const command = client.commands.get(interaction.commandName);
-    try {
-        await command.execute(interaction);
-    } catch (error) {
-        console.error(`Erro ao executar o comando ${interaction.commandName}:`, error);
-        await interaction.reply({ content: 'Houve um erro ao executar este comando!', ephemeral: true });
-    }
-});
-
 const pingAPI = async () => {
     while (true) {
         try {
             const response = await axios.get(API_URL);
             if (response.status === 200) {
+                console.log('API is online!');
             } else {
                 console.log(`Error! Status Code: ${response.status}`);
             }
